@@ -1,0 +1,41 @@
+{
+    "name": "phpexperts/conciseuuid",
+    "description": "An Eloquent model for using concise UUIDs (base62) as keys.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Theodore R. Smith",
+            "email": "theodore@phpexperts.pro",
+            "homepage": "https://www.phpexperts.pro/"
+        }
+    ],
+    "homepage": "https://github.com/phpexperts/conciseuuid",
+    "keywords": ["Laravel", "ConciseUuid"],
+    "require": {
+        "illuminate/support": "~5",
+        "ramsey/uuid": "^3.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPExperts\\ConciseUuid\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPExperts\\ConciseUuid\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PHPExperts\\ConciseUuid\\ConciseUuidServiceProvider"
+            ]
+        }
+    }
+}
