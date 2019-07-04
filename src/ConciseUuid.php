@@ -41,7 +41,7 @@ class ConciseUuid extends Model
         return $uuid;
     }
 
-    public static function toUUID(string $conciseUuid): string
+    public static function toUUID(string $conciseUuid, $withoutDashes = false): string
     {
         // 1. Convert from base62 to hex.
         $uuid = gmp_strval(gmp_init(($conciseUuid), 62), 16);
@@ -50,9 +50,11 @@ class ConciseUuid extends Model
         // is not always 32 characters long.
         $uuid = str_pad($uuid, 32, '0', STR_PAD_LEFT);
 
-        // 3. Add the four dashes.
-        $uuid = substr($uuid, 0, 8) . '-' . substr($uuid, 8, 4) . '-' . substr($uuid, 12, 4) . '-' .
-            substr($uuid, 16, 4) . '-' . substr($uuid, 20);
+        if ($withoutDashes === false) {
+            // 3. Add the four dashes.
+            $uuid = substr($uuid, 0, 8) . '-' . substr($uuid, 8, 4) . '-' . substr($uuid, 12, 4) . '-' .
+                substr($uuid, 16, 4) . '-' . substr($uuid, 20);
+        }
 
         return $uuid;
     }
