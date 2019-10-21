@@ -13,15 +13,18 @@
     "keywords": ["Laravel", "ConciseUuid"],
     "require": {
         "php": ">=7.0",
-        "ext-gmp": "*",
-        "illuminate/support": "5.*",
-        "ramsey/uuid": "^3.8"
+        "ramsey/uuid": "^3.8",
+        "tuupola/base62": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "7.*|8.*",
+        "phpunit/phpunit": "6.*|7.*|8.*",
         "mockery/mockery": "^1.1",
         "orchestra/testbench": "~3.0",
         "sempro/phpunit-pretty-print": "^1.0"
+    },
+    "suggest": {
+        "ext-gmp": "*",
+        "illuminate/support": "5.*"
     },
     "autoload": {
         "psr-4": {
@@ -31,6 +34,13 @@
     "autoload-dev": {
         "psr-4": {
             "PHPExperts\\ConciseUuid\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "classmap-authoritative": true,
+        "preferred-install": "dist",
+        "platform": {
+            "php": "7.0.0"
         }
     },
     "extra": {

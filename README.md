@@ -44,6 +44,8 @@ Via Composer
 $ composer require phpexperts/conciseuuid
 ```
 
+Having the GMP extension enabled **really** improves the execution time of this package.
+
 ## Usage
 
 ## Change log
