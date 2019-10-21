@@ -30,9 +30,16 @@ normal UUIDs.
     CREATE TABLE my_model (id char(22) primary key);
 
     PHP:
-    namespace PHPExperts\ConciseUuid\ConciseUuid;
+    namespace PHPExperts\ConciseUuid\ConciseUuidModel;
 
-    class MyModel extends ConciseUuid
+    class MyModel extends ConciseUuidModel
+    {
+    }
+
+    For your users table:
+    namespace PHPExperts\ConciseUuid\ConciseUuidAuthModel;
+
+    class User extends ConciseUuidAuthModel
     {
     }
 

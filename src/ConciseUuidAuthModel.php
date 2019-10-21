@@ -21,7 +21,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-abstract class UuidModelAuthModel extends ConciseUuidModel implements
+abstract class ConciseUuidAuthModel extends ConciseUuidModel implements
     AuthenticatableContract,
     AuthorizableContract,
     CanResetPasswordContract
