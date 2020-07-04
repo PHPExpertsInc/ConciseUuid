@@ -12,8 +12,8 @@
     "homepage": "https://github.com/phpexperts/conciseuuid",
     "keywords": ["Laravel", "ConciseUuid"],
     "require": {
-        "php": ">=7.0",
-        "ramsey/uuid": "^3.8",
+        "php": "^7.2.5",
+        "ramsey/uuid": "^4.0",
         "tuupola/base62": "^1.0"
     },
     "require-dev": {
