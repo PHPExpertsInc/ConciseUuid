@@ -82,7 +82,7 @@ final class ConciseUuid
     public static function toUUID(string $conciseUuid, $withoutDashes = false): string
     {
         if (strlen($conciseUuid) === 36 || strlen($conciseUuid) === 32) {
-            return str_replace('-', '', $conciseUuid);
+            return $withoutDashes ? str_replace('-', '', $conciseUuid) : $conciseUuid;
         }
 
         // 1. Convert from base62 to hex.
