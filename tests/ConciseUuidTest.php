@@ -124,17 +124,39 @@ class ConciseUuidTest extends TestCase
         ];
     }
 
-    public function testCanConvertToConciseUuid()
+    public function testCanConvertToAConciseUuid()
     {
         foreach ($this->getUuidPairs() as $uuid => $conciseUuid) {
             self::assertEquals($conciseUuid, ConciseUuid::fromUUID($uuid));
         }
     }
 
-    public function testCanConvertToUuid()
+    public function testCanConvertToAUuid()
     {
         foreach ($this->getUuidPairs() as $uuid => $conciseUuid) {
             self::assertEquals($uuid, ConciseUuid::toUUID($conciseUuid));
         }
+    }
+
+    public function testCanConvertToAUuidWithoutDashes()
+    {
+        foreach ($this->getUuidPairs() as $uuid => $conciseUuid) {
+            self::assertEquals(str_replace('-', '', $uuid), $uuid = ConciseUuid::toUUID($conciseUuid, true));
+        }
+    }
+
+    public function testCanGenerateNewVersion4Uuids()
+    {
+        $uuid = ConciseUuid::generateNewUUID();
+        self::assertEquals(36, strlen($uuid));
+        // @see https://stackoverflow.com/a/6640851/430062
+        self::assertRegExp('/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/', $uuid);
+    }
+
+    public function testCanStripSlashesFromUuids()
+    {
+        $uuid = 'a60888e6-bf62-4d28-9a7e-f6bcd484c5bd';
+        $expected = 'a60888e6bf624d289a7ef6bcd484c5bd';
+        self::assertEquals($expected, ConciseUuid::toUUID($uuid, true));
     }
 }
