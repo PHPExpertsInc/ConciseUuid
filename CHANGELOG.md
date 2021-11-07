@@ -2,7 +2,7 @@
 
 All notable changes to `ConciseUuid` will be documented in this file.
 
-## Version 3.0.0
+## Version 2.5.0
 
 * **[2021-11-07 04:20:30 CDT]** Return a plain UUID if it is given for toUUID().
 * **[2021-11-07 04:22:09 CDT]** [major] Fixed a ConsideUuid generation bug affecting small UUIDs.
