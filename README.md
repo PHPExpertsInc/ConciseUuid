@@ -53,7 +53,16 @@ $ composer require phpexperts/conciseuuid
 
 Having the GMP extension enabled **really** improves the execution time of this package.
 
-## Usage
+## Use cases
+
+✔ Generate new id function will always return 22 characters long string
+✔ Normal ids start with a number
+✔ System generated ids start with a letter
+✔ Can convert to a concise uuid
+✔ Can convert to a uuid
+✔ Can convert to a uuid without dashes
+✔ Can generate new version 4 uuids
+✔ Can strip slashes from uuids
 
 ## Change log
 
