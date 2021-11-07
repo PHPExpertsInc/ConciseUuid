@@ -159,4 +159,10 @@ class ConciseUuidTest extends TestCase
         $expected = 'a60888e6bf624d289a7ef6bcd484c5bd';
         self::assertEquals($expected, ConciseUuid::toUUID($uuid, true));
     }
+
+    public function testPhpVersion()
+    {
+        dump('PHP Version: ' . PHP_VERSION);
+    }
+
 }
