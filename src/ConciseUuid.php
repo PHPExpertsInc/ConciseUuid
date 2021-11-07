@@ -50,7 +50,13 @@ final class ConciseUuid
 
         // 1. Convert from base62 to hex.
         //$uuid = gmp_strval(gmp_init(($conciseUuid), 62), 16);
-        $uuid = (string) Uuid::fromBytes(Base62::decode($conciseUuid));
+
+        // First, remove padded zeros.
+        $conciseUuid = ltrim($conciseUuid, '0');
+        // If It's less than 21 bytes, pad with zeros for compatibility with UUIDs.
+        $conciseUuid = str_pad($conciseUuid, 21, '0', STR_PAD_LEFT);
+        $uuid = Base62::decode($conciseUuid);
+        $uuid = (string) Uuid::fromBytes($uuid);
 
         if ($withoutDashes === true) {
             // 3. Strip out the four dashes.
