@@ -48,7 +48,13 @@ class ConciseUuidTest extends TestCase
         for ($a = 0; $a < 1000; ++$a) {
             $uuid = ConciseUuid::generateNewId();
             self::assertEquals(22, strlen($uuid));
-            self::assertRegExp('/^[0-9]/', $uuid[0], "A normal UUID ($uuid) did not begin with a number.");
+
+            // Compat for PHPUnit v8.0.
+            if (method_exists(__CLASS__, 'assertMatchesRegularExpression')) {
+                self::assertMatchesRegularExpression('/^[0-9]/', $uuid[0], "A normal UUID ($uuid) did not begin with a number.");
+            } else {
+                self::assertRegExp('/^[0-9]/', $uuid[0], "A normal UUID ($uuid) did not begin with a number.");
+            }
         }
     }
 
@@ -62,7 +68,12 @@ class ConciseUuidTest extends TestCase
         for ($a = 0; $a < 1000; ++$a) {
             $uuid = ConciseUuid::generateNewId(true);
             self::assertEquals(22, strlen($uuid));
-            self::assertRegExp('/^[a-zA-Z]/', $uuid[0], "A system-generated UUID ($uuid) did not begin with a letter.");
+            // Compat for PHPUnit v8.0.
+            if (method_exists(__CLASS__, 'assertMatchesRegularExpression')) {
+                self::assertMatchesRegularExpression('/^[a-zA-Z]/', $uuid[0], "A system-generated UUID ($uuid) did not begin with a letter.");
+            } else {
+                self::assertRegExp('/^[a-zA-Z]/', $uuid[0], "A system-generated UUID ($uuid) did not begin with a letter.");
+            }
         }
     }
 
@@ -149,8 +160,13 @@ class ConciseUuidTest extends TestCase
     {
         $uuid = ConciseUuid::generateNewUUID();
         self::assertEquals(36, strlen($uuid));
-        // @see https://stackoverflow.com/a/6640851/430062
-        self::assertRegExp('/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/', $uuid);
+        // Compat for PHPUnit v8.0.
+        if (method_exists(__CLASS__, 'assertMatchesRegularExpression')) {
+            // @see https://stackoverflow.com/a/6640851/430062
+            self::assertMatchesRegularExpression('/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/', $uuid);
+        } else {
+            self::assertRegExp('/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/', $uuid);
+        }
     }
 
     public function testCanStripSlashesFromUuids()
